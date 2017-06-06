@@ -1,4 +1,9 @@
 require_relative "piece"
+require_relative "rook"
+require_relative "bishop"
+require_relative "queen"
+require_relative "knight"
+require_relative "king"
 require_relative "display"
 require_relative "null_piece"
 
@@ -6,8 +11,8 @@ class Board
   attr_reader :grid
 
   def initialize
-    main_row = [Piece.new, Piece.new, Piece.new, Piece.new,
-       Piece.new, Piece.new, Piece.new, Piece.new]
+    main_row = [Rook.new, Knight.new, Bishop.new, Queen.new,
+       King.new, Bishop.new, Knight.new, Rook.new]
     pawns_row = Array.new(8) {Piece.new}
     empty_row = Array.new(8) {NullPiece.new}
     all_pieces = main_row + pawns_row + empty_row + empty_row +

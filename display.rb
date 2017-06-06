@@ -18,7 +18,6 @@ class Display
       result = @cursor.get_input
       @selected_positions << result unless result.nil?
       if @selected_positions.length == 2
-        p @selected_positions
         move(@selected_positions)
       end
     end
