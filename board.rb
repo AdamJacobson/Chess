@@ -16,7 +16,7 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    raise OffBoardError if in_bounds?(start_pos) || in_bounds?(end_pos)
+    raise OffBoardError unless in_bounds?(start_pos) || in_bounds?(end_pos)
     raise NullPieceError if self[start_pos].is_a? NullPiece
 
     self[end_pos] = self[start_pos]
