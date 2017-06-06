@@ -1,8 +1,10 @@
 require_relative "piece"
+require_relative "display"
 require_relative "null_piece"
 
 class Board
   attr_reader :grid
+
   def initialize
     main_row = [Piece.new, Piece.new, Piece.new, Piece.new,
        Piece.new, Piece.new, Piece.new, Piece.new]

@@ -3,6 +3,8 @@ require_relative "cursor"
 
 require "colorize"
 
+require 'byebug'
+
 class Display
   def initialize(board)
     @board = board
@@ -10,8 +12,10 @@ class Display
   end
 
   def render
+    system("clear")
     @board.grid.each do |row|
-      puts row.map(&:to_s)
+      puts row.map(&:to_s).join(" ")
     end
+    nil
   end
 end
