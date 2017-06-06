@@ -2,6 +2,7 @@ require_relative "piece"
 require_relative "null_piece"
 
 class Board
+  attr_reader :grid
   def initialize
     main_row = [Piece.new, Piece.new, Piece.new, Piece.new,
        Piece.new, Piece.new, Piece.new, Piece.new]
@@ -13,15 +14,15 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    raise OffBoardError if (start_pos + end_pos).any? { |cord| cord > 7 }
+    raise OffBoardError if in_bounds?(start_pos) || in_bounds?(end_pos)
     raise NullPieceError if self[start_pos].is_a? NullPiece
-    # start_x, start_y = start_pos
-    # end_x, end_y = end_pos
 
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.new
+  end
 
-
+  def in_bounds?(pos)
+    pos.any? { |cord| cord > 7 }
   end
 
   def [](pos)
