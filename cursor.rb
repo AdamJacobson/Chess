@@ -1,3 +1,4 @@
+require "byebug"
 require "io/console"
 
 KEYMAP = {
@@ -32,11 +33,12 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :toggle_selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @toggle_selected = false
   end
 
   def get_input
@@ -72,7 +74,7 @@ class Cursor
     STDIN.echo = true # the console prints return values again
     STDIN.cooked! # the opposite of raw mode :)
 
-    return input
+    input
   end
 
   def handle_key(key)

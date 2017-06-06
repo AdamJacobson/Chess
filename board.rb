@@ -24,7 +24,7 @@ class Board
   end
 
   def in_bounds?(pos)
-    pos.any? { |cord| cord > 7 }
+    pos.all? { |cord| (0..7).cover? cord }
   end
 
   def [](pos)
