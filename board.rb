@@ -11,13 +11,30 @@ class Board
   attr_reader :grid
 
   def initialize
-    main_row = [Rook.new, Knight.new, Bishop.new, Queen.new,
-       King.new, Bishop.new, Knight.new, Rook.new]
-    pawns_row = Array.new(8) {Piece.new}
-    empty_row = Array.new(8) {NullPiece.new}
-    all_pieces = main_row + pawns_row + empty_row + empty_row +
-      empty_row + empty_row + pawns_row + main_row.reverse
+    main_row_black = [Rook.new, Knight.new, Bishop.new, Queen.new,
+      King.new, Bishop.new, Knight.new, Rook.new]
+    pawns_row_black = Array.new(8) { Piece.new }
+    empty_row_1 = Array.new(8) { NullPiece.new }
+    empty_row_2 = Array.new(8) { NullPiece.new }
+    empty_row_3 = Array.new(8) { NullPiece.new }
+    empty_row_4 = Array.new(8) { NullPiece.new }
+    pawns_row_white = Array.new(8) { Piece.new }
+    main_row_white = [Rook.new, Knight.new, Bishop.new, King.new, Queen.new,
+      Bishop.new, Knight.new, Rook.new]
+
+    all_pieces = main_row_black + pawns_row_black + empty_row_1 + empty_row_2 +
+      empty_row_3 + empty_row_4 + pawns_row_white + main_row_white
     @grid = Array.new(8) { Array.new(8) { all_pieces.shift } }
+
+    # Set starting positions and board references
+    @grid.each_with_index do |row, r_idx|
+      row.each_with_index do |col, c_idx|
+        self[[r_idx, c_idx]].pos = [r_idx, c_idx]
+        self[[r_idx, c_idx]].board = self
+      end
+    end
+
+    # p @grid
   end
 
   def move_piece(start_pos, end_pos)

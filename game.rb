@@ -2,6 +2,7 @@ require_relative 'board'
 require_relative 'display'
 
 class Game
+  attr_reader :board
   def initialize
     @board = Board.new
     @display = Display.new(@board)
@@ -10,5 +11,5 @@ class Game
 end
 
 if __FILE__ == $PROGRAM_NAME
-  Game.new
+  game = Game.new
 end

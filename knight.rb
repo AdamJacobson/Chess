@@ -5,7 +5,6 @@ class Knight < Piece
 
   def initialize
     @symbol = "\u2658"
-    @move_dirs = [:vertical, :diagonal]
   end
 
   def move_dirs

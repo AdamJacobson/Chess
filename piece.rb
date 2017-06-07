@@ -1,4 +1,6 @@
 class Piece
+  attr_accessor :board, :pos
+
   def initialize
     @symbol = "P"
   end
@@ -7,7 +9,4 @@ class Piece
     @symbol.encode('utf-8')
   end
 
-  def moves
-    #returns array of pieces the piece can move to
-  end
 end

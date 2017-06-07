@@ -13,6 +13,7 @@ class Display
   end
 
   def render
+    p @board[[1,0]].moves
     while true
       display_grid
       result = @cursor.get_input
